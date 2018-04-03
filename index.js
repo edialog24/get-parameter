@@ -10,10 +10,17 @@
 module.exports = function getParameter(name, url){
   'use strict';
   var queryDict = {};
+  var sobj = {};
   if(!url) {
-    url = location;
+      sobj = location;
+  } else {
+    sobj = {
+        href:url,
+        search:url.substr(url.indexOf('?'));
+    }
   }
-  var queries = url.search.substr(1).split('&');
+
+  var queries = sobj.search.substr(1).split('&');
   for (var i=0; i<queries.length; i++) {
     queryDict[queries[i].split('=')[0]] = decodeURIComponent(queries[i].split('=')[1]);
   } 
