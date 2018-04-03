@@ -16,7 +16,7 @@ module.exports = function getParameter(name, url){
   } else {
     sobj = {
         href:url,
-        search:url.substr(url.indexOf('?'));
+        search:url.substr(url.indexOf('?'))
     }
   }
 
