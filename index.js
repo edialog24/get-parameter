@@ -7,10 +7,13 @@
 // Returns: value
 // ------------------------------------------------------------
 
-module.exports = function getParameter(name){
+module.exports = function getParameter(name, url){
   'use strict';
   var queryDict = {};
-  var queries = location.search.substr(1).split('&');
+  if(!url) {
+    url = location;
+  }
+  var queries = url.search.substr(1).split('&');
   for (var i=0; i<queries.length; i++) {
     queryDict[queries[i].split('=')[0]] = decodeURIComponent(queries[i].split('=')[1]);
   } 
